@@ -1,4 +1,11 @@
-<?php include 'includes/header.php'?>
+<?php include 'config/config.php';?>
+<?php include 'libraries/Database.php'; ?>
+<?php include 'includes/header.php'; ?>
+<?php
+//Create DB Object
+$db = new Database();
+
+?>
 
             <div class="blog-post">
                 <h2 class="blog-post-title">International PHP Conference 2020</h2>
@@ -29,4 +36,4 @@
 <!--                <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>-->
 <!--            </nav>-->
 
-<?php include 'includes/footer.php'?>
+<?php include 'includes/footer.php';?>
