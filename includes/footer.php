@@ -3,17 +3,21 @@
 <aside class="col-md-4 blog-sidebar">
     <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">About</h4>
-        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p class="mb-0"><?php echo $site_description; ?></p>
     </div>
 
     <div class="p-4">
         <h4 class="font-italic">Categories</h4>
-        <ol class="list-unstyled mb-0">
-            <li><a href="#">News</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Tutorials</a></li>
-            <li><a href="#">Misc</a></li>
-        </ol>
+        <?php if ($categories): ?>
+            <ol class="list-unstyled mb-0">
+                <?php while ($row = $categories->fetch_assoc()): ?>
+                    <li><a href="posts.php?category=<?php echo $row['id'];?>"><?php echo $row['name']; ?> </a></li>
+                <?php endwhile; ?>
+            </ol>
+        <?php else: ?>
+            <p>There are no categories yet.</p>
+        <?php endif; ?>
+
     </div>
 
 </aside><!-- /.blog-sidebar -->
