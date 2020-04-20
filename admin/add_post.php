@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <button name="Submit" type="submit" class="btn btn-primary">Submit</button>
+            <input name="submit" type="submit" class="btn btn-primary" value="Submit">
             <a href="index.php" class="btn btn-secondary">Cancel</a>
         </div>
         <br>

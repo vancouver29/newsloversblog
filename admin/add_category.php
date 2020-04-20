@@ -5,7 +5,11 @@
         <label>Category Name</label>
         <input name="name" type="text" class="form-control" placeholder="Enter Category">
     </div>
-    <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+    <div>
+        <input name="submit" type="submit" class="btn btn-primary" value="Submit">
+        <a href="index.php" class="btn btn-secondary">Cancel</a>
+    </div>
+    <br>
 </form>
 
-<?php include 'includes/header.php';?>
+<?php include 'includes/footer.php';?>
