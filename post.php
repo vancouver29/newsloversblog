@@ -12,7 +12,7 @@ $query = "SELECT * FROM posts WHERE id=".$id;
 $post = $db->select($query)->fetch_assoc();
 
 //Create query
-$query = "SELECT * FROM category";
+$query = "SELECT * FROM categories";
 //Run query
 $categories = $db->select($query);
 

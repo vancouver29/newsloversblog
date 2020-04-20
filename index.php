@@ -11,7 +11,7 @@ $query = "SELECT * FROM posts";
 $posts = $db->select($query);
 
 //Create query
-$query = "SELECT * FROM category";
+$query = "SELECT * FROM categories";
 //Run query
 $categories = $db->select($query);
 

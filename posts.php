@@ -20,7 +20,7 @@ if (isset($_GET['category'])) {
 }
 
 //Create query
-$query = "SELECT * FROM category";
+$query = "SELECT * FROM categories";
 //Run query
 $categories = $db->select($query);
 
