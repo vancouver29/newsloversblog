@@ -91,3 +91,6 @@
                 <!--            <h3 class="pb-4 mb-4 font-italic border-bottom">-->
                 <!--                From the Firehose-->
                 <!--            </h3>-->
+                <?php if (isset($_GET['msg'])) : ?>
+                    <div class="alert alert-success" ><?php echo htmlentities($_GET['msg']);?></div>
+                <?php endif; ?>

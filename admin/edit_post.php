@@ -18,8 +18,49 @@ $categories = $db->select($query);
 
 ?>
 
+<?php
+if (isset($_POST['submit'])) {
+    //Assign Vars
+    $title = mysqli_real_escape_string($db->link, $_POST['title']);
+    $body  = mysqli_real_escape_string($db->link, $_POST['body']);
+    $category = mysqli_real_escape_string($db->link, $_POST['category']);
+    $author = mysqli_real_escape_string($db->link, $_POST['author']);
+    $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
 
-    <form method="post" action="edit_post.php">
+    //Simple Validation
+    if ($title == '' || $body == '' || $category == '' || $author == '') {
+        // Set error
+        $error = 'Please fill out all required fields';
+    } else {
+        //Create Query
+        $query = "UPDATE posts
+                SET 
+                title = '$title',
+                body = '$body',
+                category = '$category',
+                author = '$author',
+                tags = '$tags'
+                WHERE id = ".$id;
+
+//        var_dump($query);
+        //Run Query
+        $update_row = $db->update($query);
+
+    }
+}
+?>
+
+<?php
+if (isset($_POST['delete'])) {
+    //Create Query
+    $query = "DELETE FROM posts WHERE id = ".$id;
+    //Run Query
+    $delete_row = $db->delete($query);
+}
+?>
+
+
+    <form method="post" action="edit_post.php?id=<?php echo $id; ?>">
         <div class="form-group">
             <label>Post Title</label>
             <input name="title" type="text" class="form-control" placeholder="Enter Title" value="<?php echo $post['title'];?>">
@@ -38,7 +79,7 @@ $categories = $db->select($query);
                         $selected = '';
                     }
                     ?>
-                    <option <?php echo $selected; ?>><?php echo $row['name']; ?></option>
+                    <option <?php echo $selected; ?> value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
                     <!--                example:    <option>Events</option>-->
                 <?php endwhile; ?>
             </select>

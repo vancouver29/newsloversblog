@@ -1,4 +1,6 @@
 <?php
+// redirect to the site in header()
+@ob_start();
 
 class Database {
     public $host = DB_HOST;
@@ -34,6 +36,7 @@ class Database {
      */
     public function select($query){
         $result = $this->link->query($query) or die($this->link->error . __LINE__);
+
         if ($result->num_rows > 0) {
             return $result;
         } else {
@@ -49,7 +52,7 @@ class Database {
 
         //Validate
         if ($insert_row) {
-            header("Location: index.php?msg = " . urlencode('Record Added'));
+            header("Location: index.php?msg=" . urlencode('Record Added'));
             exit();
         } else {
             die('Error : (' . $this->link->errno .') ' . $this->link->error);
@@ -61,10 +64,9 @@ class Database {
      */
     public function update($query){
         $update_row = $this->link->query($query) or die($this->link->error . __LINE__);
-
         //Validate
         if ($update_row) {
-            header("Location: index.php?msg = " . urlencode('Record Updated'));
+            header("Location: index.php?msg=" . urlencode('Record Updated'));
             exit();
         } else {
             die('Error : (' . $this->link->errno .') ' . $this->link->error);
@@ -78,10 +80,11 @@ class Database {
         $delete_row = $this->link->query($query) or die($this->link->error.__LINE__);
 
         //Validate
-        if ($insert_row) {
-            header("Location: index.php?msg = " . urlencode('Record Added'));
+        if ($delete_row) {
+            header("Location: index.php?msg=" . urlencode('Record Deleted'));
         } else {
             die('Error : (' . $this->link->errno .') ' . $this->link->error);
         }
     }
+
 }
