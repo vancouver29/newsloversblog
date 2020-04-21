@@ -1,12 +1,11 @@
 <?php include 'includes/header.php'; ?>
 
-
 <?php
 //Create DB Object
 $db = new Database();
 
 //Create query
-$query = "SELECT * FROM posts";
+$query = "SELECT * FROM posts ORDER BY id DESC ";
 //Run query
 $posts = $db->select($query);
 
@@ -16,6 +15,7 @@ $query = "SELECT * FROM categories";
 $categories = $db->select($query);
 
 ?>
+
 
 <?php if ($posts): ?>
     <?php while ($row = $posts->fetch_assoc()): ?>

@@ -41,6 +41,15 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
+<?php
+if (isset($_POST['delete'])) {
+    //Create Query
+    $query = "DELETE FROM categories WHERE id = ".$id;
+    //Run Query
+    $delete_row = $db->delete($query);
+}
+?>
+
 
 <form method="post" action="edit_category.php?id=<?php echo $id ?>">
     <div class="form-group">
